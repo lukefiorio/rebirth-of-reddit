@@ -1,5 +1,9 @@
-$myColor: lavender;
+@import 'partials/_large';
+@import 'partials/_medium';
+@import 'partials/_small';
 
-body {
-  background: $myColor;
-}
+// $myColor: lavender;
+
+// body {
+//   background: $myColor;
+// }
