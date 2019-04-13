@@ -2,13 +2,33 @@
   position: absolute;
 }
 
-.menuBullet {
+#banner {
+  display: flex;
+  justify-content: center;
+  height: $largeBannerHeight;
+  background: $menuDarkColor;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: $menuLightColor;
+  height: $largeBannerHeight;
+  width: 10%;
+  font-family: $menuFont;
+}
+
+.menuBullet {
+  display: flex;
+  color: $menuLightColor;
+  align-items: center;
 }
 
 #footer {
   display: flex;
   justify-content: center;
+  background: $menuDarkColor;
 }
 
 // swap FB img display on hover

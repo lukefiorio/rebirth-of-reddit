@@ -1,6 +1,13 @@
 // put these variables into a '_variables' partial file
 $defaultBackground: #b74326;
+$hoverColor: #f1592b;
+$menuDarkColor: #3a3a3c;
 $menuLightColor: #818285;
+$largeBannerHeight: 45px;
+$mediumBannerHeight: 40px;
+$smallBannerHeight: 35px;
+$menuFont: 'Oswald', sans-serif;
+$redditFont: 'Lato', sans-serif;
 
 @import 'partials/_large';
 @import 'partials/_medium';
@@ -22,22 +29,15 @@ $menuLightColor: #818285;
 
 .fa-plus-square:hover {
   color: white;
-  background: $defaultBackground;
+  background: $hoverColor;
 }
 
-#banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 45px;
-  background: #3a3a3c;
-}
-
-.menu {
-  color: $menuLightColor;
+.menu:hover {
+  color: $hoverColor;
 }
 
 #content {
   height: 500px;
   background-image: url(/../assets/bg.jpg);
+  background-size: cover;
 }

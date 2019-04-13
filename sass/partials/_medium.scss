@@ -3,8 +3,27 @@
     position: absolute;
   }
 
-  .menuBullet {
+  #banner {
+    display: flex;
+    justify-content: center;
+    height: $mediumBannerHeight;
+    background: $menuDarkColor;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: $menuLightColor;
+    height: $mediumBannerHeight;
+    width: 20%;
+    font-family: $menuFont;
+  }
+
+  .menuBullet {
+    display: flex;
+    color: $menuLightColor;
+    align-items: center;
   }
 
   #footer {

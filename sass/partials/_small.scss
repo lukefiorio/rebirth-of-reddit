@@ -8,17 +8,28 @@
     display: none;
   }
 
+  #banner {
+    display: flex;
+    justify-content: center;
+    height: $smallBannerHeight;
+    background: $menuDarkColor;
+  }
+
   .menuBullet {
     display: none;
   }
 
   .menu {
+    display: flex;
+    justify-content: center;
     border-top: 1px $menuLightColor solid;
+    width: 25%;
+    height: $smallBannerHeight;
+    font-family: $menuFont;
   }
 
   #menu2 {
     border-left: 1px $menuLightColor solid;
-    border-right: 1px $menuLightColor solid;
   }
 
   #menu3 {
