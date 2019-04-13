@@ -26,6 +26,21 @@
     align-items: center;
   }
 
+  .postContainers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 400px;
+    width: 325px;
+    background-color: white;
+    margin: 12px;
+  }
+
+  .postImages {
+    height: 170px;
+    width: 275px;
+  }
+
   #footer {
     display: none;
   }

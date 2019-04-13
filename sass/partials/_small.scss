@@ -37,6 +37,22 @@
     border-right: 1px $menuLightColor solid;
   }
 
+  .postContainers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 480px;
+    width: 95%;
+    background-color: white;
+    margin-top: 12px;
+  }
+
+  .postImages {
+    margin-top: 25px;
+    height: 50%;
+    width: 90%;
+  }
+
   #footer {
     display: none;
   }
