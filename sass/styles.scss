@@ -1,9 +1,43 @@
+// put these variables into a '_variables' partial file
+$defaultBackground: #b74326;
+$menuLightColor: #818285;
+
 @import 'partials/_large';
 @import 'partials/_medium';
 @import 'partials/_small';
 
-// $myColor: lavender;
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
 
-// body {
-//   background: $myColor;
-// }
+.fa-plus-square {
+  position: absolute;
+  left: 90%;
+  color: $defaultBackground;
+  font-size: 2em;
+}
+
+.fa-plus-square:hover {
+  color: white;
+  background: $defaultBackground;
+}
+
+#banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  background: #3a3a3c;
+}
+
+.menu {
+  color: $menuLightColor;
+}
+
+#content {
+  height: 500px;
+  background-image: url(/../assets/bg.jpg);
+}

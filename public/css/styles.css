@@ -1,10 +1,84 @@
-body {
-  background: blue; }
+.logo {
+  position: absolute; }
+
+.menuBullet {
+  color: #818285; }
+
+#footer {
+  display: flex;
+  justify-content: center; }
+
+#fbOrange {
+  display: none; }
+
+#facebook:hover #fbGray {
+  display: none; }
+
+#facebook:hover #fbOrange {
+  display: block; }
+
+#instOrange {
+  display: none; }
+
+#instagram:hover #instGray {
+  display: none; }
+
+#instagram:hover #instOrange {
+  display: block; }
 
 @media only screen and (max-width: 768px) {
-  body {
-    background: aqua; } }
+  .logo {
+    position: absolute; }
+  .menuBullet {
+    color: #818285; }
+  #footer {
+    display: none; } }
 
 @media only screen and (max-width: 425px) {
-  body {
-    background: lightblue; } }
+  .logo {
+    position: absolute;
+    left: 0%; }
+  #logoLines {
+    display: none; }
+  .menuBullet {
+    display: none; }
+  .menu {
+    border-top: 1px #818285 solid; }
+  #menu2 {
+    border-left: 1px #818285 solid;
+    border-right: 1px #818285 solid; }
+  #menu3 {
+    border-left: 1px #818285 solid;
+    border-right: 1px #818285 solid; }
+  #footer {
+    display: none; } }
+
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px; }
+
+.fa-plus-square {
+  position: absolute;
+  left: 90%;
+  color: #b74326;
+  font-size: 2em; }
+
+.fa-plus-square:hover {
+  color: white;
+  background: #b74326; }
+
+#banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  background: #3a3a3c; }
+
+.menu {
+  color: #818285; }
+
+#content {
+  height: 500px;
+  background-image: url(/../assets/bg.jpg); }
