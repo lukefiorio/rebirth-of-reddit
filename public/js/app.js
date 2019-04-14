@@ -15,8 +15,8 @@ function getRedditPage() {
       let dataLikes = responseDataArr[i].data.ups.toLocaleString('en-US');
       let dataText = responseDataArr[i].data.selftext;
       let dataImage = responseDataArr[i].data.url;
-      console.log(dataTitle);
       console.log(dataImage);
+      console.log(dataImage.complete);
 
       // calcluate time since posting
       let timeStamp = Math.floor(new Date().getTime() / 1000.0);
@@ -62,9 +62,9 @@ function getRedditPage() {
       let postImage = document.createElement('img');
       postImage.className = 'postImages';
       postImage.src = dataImage;
-      if (!postImage.complete) {
+      postImage.onerror = function() {
         postImage.src = defaultImg;
-      }
+      };
       post.appendChild(postImage);
 
       let postTitle = document.createElement('div');
@@ -115,4 +115,6 @@ function getRedditPage() {
   redditReq.send();
 }
 
+// default page loaded;
+getRedditPage();
 menu1.addEventListener('click', getRedditPage);
