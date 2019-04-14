@@ -1,81 +1,118 @@
 'use strict';
 
-// container
-//   image
-//   title
-//     author "*"
-//     posted "*'
-//     views
-//   text
+function getRedditPage() {
+  function redditListener() {
+    let responseDataArr = JSON.parse(this.responseText).data.children;
+    let defaultImg = 'https://i.redd.it/rq36kl1xjxr01.png';
 
-function redditListener() {
-  let responseDataArr = JSON.parse(this.responseText).data.children;
-  console.log(responseDataArr[0].data.title);
-  console.log(responseDataArr[0].data.selftext);
-  console.log(responseDataArr[0].data.created);
-  console.log(responseDataArr[0].data.num_comments);
-  console.log('u/' + responseDataArr[0].data.author);
-  console.log(responseDataArr[0].data.ups);
+    for (let i = 0; i < responseDataArr.length; i++) {
+      let dataTitle = responseDataArr[i].data.title;
+      if (dataTitle.length === 0) {
+        dataTitle = '[Untitled]';
+      }
+      let dataAuthor = 'u/' + responseDataArr[i].data.author;
+      let dataCreated = responseDataArr[i].data.created;
+      let dataLikes = responseDataArr[i].data.ups.toLocaleString('en-US');
+      let dataText = responseDataArr[i].data.selftext;
+      let dataImage = responseDataArr[i].data.url;
+      console.log(dataTitle);
+      console.log(dataImage);
 
-  let dataTitle = responseDataArr[0].data.title;
-  let dataAuthor = 'u/' + responseDataArr[0].data.author;
-  let dataCreated = responseDataArr[0].data.created;
-  let dataLikes = responseDataArr[0].data.ups;
-  let dataText = responseDataArr[0].data.selftext;
-  //let dataCommentCnt = responseDataArr[0].data.num_comments;
+      // calcluate time since posting
+      let timeStamp = Math.floor(new Date().getTime() / 1000.0);
+      let secondsElapsed = timeStamp - dataCreated;
+      let minutesElapsed = secondsElapsed / 60;
+      let hoursElapsed = minutesElapsed / 60;
+      let daysElapsed = hoursElapsed / 24;
+      let monthsElapsed = daysElapsed / (365.25 / 12);
+      let yearsElapsed = monthsElapsed / 12;
+      let timeElapsed;
 
-  // make div to hold each post;
-  let post = document.createElement('div');
-  post.className = 'postContainers';
-  content.appendChild(post);
+      if (yearsElapsed >= 2) {
+        timeElapsed = `${Math.floor(yearsElapsed)} years ago`;
+      } else if (yearsElapsed >= 1) {
+        timeElapsed = `${Math.floor(yearsElapsed)} year ago`;
+      } else if (monthsElapsed >= 2) {
+        timeElapsed = `${Math.floor(monthsElapsed)} months ago`;
+      } else if (monthsElapsed >= 1) {
+        timeElapsed = `${Math.floor(monthsElapsed)} month ago`;
+      } else if (daysElapsed >= 2) {
+        timeElapsed = `${Math.floor(daysElapsed)} days ago`;
+      } else if (daysElapsed >= 1) {
+        timeElapsed = `${Math.floor(daysElapsed)} day ago`;
+      } else if (hoursElapsed >= 2) {
+        timeElapsed = `${Math.floor(hoursElapsed)} hours ago`;
+      } else if (hoursElapsed >= 1) {
+        timeElapsed = `${Math.floor(hoursElapsed)} hour ago`;
+      } else if (minutesElapsed >= 2) {
+        timeElapsed = `${Math.floor(minutesElapsed)} minutes ago`;
+      } else if (minutesElapsed >= 1) {
+        timeElapsed = `${Math.floor(minutesElapsed)} minute ago`;
+      } else if (secondsElapsed >= 2) {
+        timeElapsed = `${Math.floor(secondsElapsed)} seconds ago`;
+      } else if (secondsElapsed >= 1) {
+        timeElapsed = `${Math.floor(secondsElapsed)} second ago`;
+      }
 
-  let postImage = document.createElement('img');
-  postImage.className = 'postImages';
-  postImage.src = 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/04/10/19/pinyon-jay-bird.jpg';
-  post.appendChild(postImage);
+      // container div to hold each post;
+      let post = document.createElement('div');
+      post.className = 'postContainers';
+      content.appendChild(post);
 
-  let postTitle = document.createElement('div');
-  postTitle.className = 'postTitles';
-  postTitle.innerHTML = dataTitle;
-  post.appendChild(postTitle);
+      let postImage = document.createElement('img');
+      postImage.className = 'postImages';
+      postImage.src = dataImage;
+      if (!postImage.complete) {
+        postImage.src = defaultImg;
+      }
+      post.appendChild(postImage);
 
-  let postDetail = document.createElement('div');
-  postDetail.className = 'postDetailContainers';
-  post.appendChild(postDetail);
+      let postTitle = document.createElement('div');
+      postTitle.className = 'postTitles';
+      postTitle.innerHTML = dataTitle;
+      post.appendChild(postTitle);
 
-  let postAuthor = document.createElement('span');
-  postAuthor.className = 'postDetails';
-  postAuthor.innerHTML = dataAuthor;
-  postDetail.appendChild(postAuthor);
+      let postDetail = document.createElement('div');
+      postDetail.className = 'postDetailContainers';
+      post.appendChild(postDetail);
 
-  let postBullet1 = document.createElement('span');
-  postBullet1.className = 'postDetailBullets';
-  postBullet1.innerHTML = '•';
-  postDetail.appendChild(postBullet1);
+      let postAuthor = document.createElement('span');
+      postAuthor.className = 'postDetails';
+      postAuthor.innerHTML = dataAuthor;
+      postDetail.appendChild(postAuthor);
 
-  let postCreated = document.createElement('span');
-  postCreated.className = 'postDetails';
-  postCreated.innerHTML = dataCreated;
-  postDetail.appendChild(postCreated);
+      let postBullet1 = document.createElement('span');
+      postBullet1.className = 'postDetailBullets';
+      postBullet1.innerHTML = ' • ';
+      postDetail.appendChild(postBullet1);
 
-  let postBullet2 = document.createElement('span');
-  postBullet2.className = 'postDetailBullets';
-  postBullet2.innerHTML = '•';
-  postDetail.appendChild(postBullet2);
+      let postCreated = document.createElement('span');
+      postCreated.className = 'postDetails';
+      postCreated.innerHTML = timeElapsed;
+      postDetail.appendChild(postCreated);
 
-  let postLikes = document.createElement('span');
-  postLikes.className = 'postDetails';
-  postLikes.innerHTML = dataLikes;
-  postDetail.appendChild(postLikes);
+      let postBullet2 = document.createElement('span');
+      postBullet2.className = 'postDetailBullets';
+      postBullet2.innerHTML = ' • ';
+      postDetail.appendChild(postBullet2);
 
-  let postText = document.createElement('div');
-  postText.className = 'postTexts';
-  postText.innerHTML = dataText;
-  post.appendChild(postText);
+      let postLikes = document.createElement('span');
+      postLikes.className = 'postDetails';
+      postLikes.innerHTML = dataLikes + ' likes';
+      postDetail.appendChild(postLikes);
+
+      let postText = document.createElement('div');
+      postText.className = 'postTexts';
+      postText.innerHTML = dataText;
+      post.appendChild(postText);
+    }
+  }
+
+  const reddit = 'https://www.reddit.com/r/';
+  const redditReq = new XMLHttpRequest();
+  redditReq.addEventListener('load', redditListener);
+  redditReq.open('GET', reddit + 'pics.json');
+  redditReq.send();
 }
 
-const reddit = 'https://www.reddit.com/r/';
-const redditReq = new XMLHttpRequest();
-redditReq.addEventListener('load', redditListener);
-redditReq.open('GET', reddit + 'pics.json');
-redditReq.send();
+menu1.addEventListener('click', getRedditPage);

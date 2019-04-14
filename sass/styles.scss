@@ -32,13 +32,39 @@ $redditFont: 'Lato', sans-serif;
   background: $hoverColor;
 }
 
+.menuBullet:hover {
+  cursor: default;
+}
+
 .menu:hover {
   color: $hoverColor;
+  cursor: pointer;
 }
 
 #content {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   background-image: url(/../assets/bg.jpg);
   background-size: cover;
+}
+
+.postContainers {
+  font-family: $redditFont;
+}
+
+.postTitles {
+  font-weight: bold;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.postDetailBullets {
+  color: $menuLightColor;
+}
+
+.postDetails {
+  color: gray;
 }

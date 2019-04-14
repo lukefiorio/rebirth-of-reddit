@@ -37,8 +37,16 @@
   }
 
   .postImages {
+    margin-top: 25px;
     height: 170px;
     width: 275px;
+  }
+
+  .postTexts {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   #footer {
