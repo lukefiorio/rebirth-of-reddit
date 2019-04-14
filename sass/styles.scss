@@ -45,12 +45,18 @@ $redditFont: 'Lato', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-image: url(/../assets/bg.jpg);
   background-size: cover;
 }
 
 .postContainers {
   font-family: $redditFont;
+  border: 10px transparent solid;
+}
+
+.postContainers:hover {
+  border: $hoverColor 10px solid;
 }
 
 .postTitles {

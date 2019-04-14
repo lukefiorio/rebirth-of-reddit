@@ -13,38 +13,61 @@
   align-items: center;
   color: #818285;
   height: 45px;
-  width: 10%;
-  font-family: "Oswald", sans-serif; }
+  font-family: "Oswald", sans-serif;
+  font-size: 1.5em; }
 
 .menuBullet {
   display: flex;
   color: #818285;
-  align-items: center; }
+  align-items: center;
+  margin-left: 15px;
+  margin-right: 15px; }
+
+#contentArea {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%; }
 
 .postContainers {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 400px;
+  height: 450px;
   width: 325px;
   background-color: white;
   margin: 12px; }
 
 .postImages {
   margin-top: 25px;
-  height: 170px;
+  height: 200px;
   width: 275px; }
+
+.postTitles {
+  margin-top: 10px;
+  width: 90%;
+  font-size: 1.5em; }
+
+.postDetailContainers {
+  width: 90%; }
 
 .postTexts {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
-  overflow: hidden; }
+  overflow: hidden;
+  width: 90%;
+  margin-top: 10px; }
 
 #footer {
   display: flex;
   justify-content: center;
-  background: #3a3a3c; }
+  background: #3a3a3c;
+  position: fixed;
+  bottom: 0;
+  width: 100%; }
 
 #fbOrange {
   display: none; }
@@ -78,29 +101,46 @@
     align-items: center;
     color: #818285;
     height: 40px;
-    width: 20%;
-    font-family: "Oswald", sans-serif; }
+    font-family: "Oswald", sans-serif;
+    font-size: 1.3em; }
   .menuBullet {
     display: flex;
     color: #818285;
-    align-items: center; }
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px; }
+  #contentArea {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center; }
   .postContainers {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 400px;
-    width: 325px;
+    width: 275px;
     background-color: white;
     margin: 12px; }
   .postImages {
     margin-top: 25px;
-    height: 170px;
-    width: 275px; }
+    height: 160px;
+    width: 225px; }
+  .postTitles {
+    margin-top: 10px;
+    width: 90%;
+    font-size: 1.5em; }
+  .postDetailContainers {
+    width: 90%; }
   .postTexts {
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
-    overflow: hidden; }
+    overflow: hidden;
+    width: 90%;
+    margin-top: 10px; }
   #footer {
     display: none; } }
 
@@ -129,6 +169,10 @@
   #menu3 {
     border-left: 1px #818285 solid;
     border-right: 1px #818285 solid; }
+  #contentArea {
+    display: flex;
+    flex-direction: column;
+    width: 100%; }
   .postContainers {
     display: flex;
     flex-direction: column;
@@ -184,11 +228,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-image: url(/../assets/bg.jpg);
   background-size: cover; }
 
 .postContainers {
-  font-family: "Lato", sans-serif; }
+  font-family: "Lato", sans-serif;
+  border: 10px transparent solid; }
+
+.postContainers:hover {
+  border: #f1592b 10px solid; }
 
 .postTitles {
   font-weight: bold;

@@ -37,6 +37,12 @@
     border-right: 1px $menuLightColor solid;
   }
 
+  #contentArea {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
   .postContainers {
     display: flex;
     flex-direction: column;

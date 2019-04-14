@@ -15,8 +15,6 @@ function getRedditPage() {
       let dataLikes = responseDataArr[i].data.ups.toLocaleString('en-US');
       let dataText = responseDataArr[i].data.selftext;
       let dataImage = responseDataArr[i].data.url;
-      console.log(dataImage);
-      console.log(dataImage.complete);
 
       // calcluate time since posting
       let timeStamp = Math.floor(new Date().getTime() / 1000.0);
@@ -57,7 +55,7 @@ function getRedditPage() {
       // container div to hold each post;
       let post = document.createElement('div');
       post.className = 'postContainers';
-      content.appendChild(post);
+      contentArea.appendChild(post);
 
       let postImage = document.createElement('img');
       postImage.className = 'postImages';
