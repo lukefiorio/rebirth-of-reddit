@@ -1,7 +1,8 @@
 'use strict';
 
-function getRedditPage() {
+function getRedditPage(threadName) {
   function redditListener() {
+    contentArea.innerHTML = '';
     let responseDataArr = JSON.parse(this.responseText).data.children;
     let defaultImg = 'https://i.redd.it/rq36kl1xjxr01.png';
 
@@ -109,10 +110,28 @@ function getRedditPage() {
   const reddit = 'https://www.reddit.com/r/';
   const redditReq = new XMLHttpRequest();
   redditReq.addEventListener('load', redditListener);
-  redditReq.open('GET', reddit + 'pics.json');
+  redditReq.open('GET', reddit + threadName + '.json');
   redditReq.send();
 }
 
-// default page loaded;
-getRedditPage();
-menu1.addEventListener('click', getRedditPage);
+let menuClass = document.getElementsByClassName('menu');
+// dont include the final 'RANDOM' button in this event listener
+for (let i = 0; i < menuClass.length - 1; i++) {
+  menuClass[i].addEventListener('click', function() {
+    getRedditPage.apply(this, [this.dataset.thread]);
+  });
+}
+
+let randomPage = function() {
+  let pageArr = ['data', 'hawaii', 'food', 'hockey', 'travel', 'apples', 'laundry'];
+  let randomIndex = Math.floor(Math.random() * pageArr.length);
+  console.log(pageArr[randomIndex]);
+  return pageArr[randomIndex];
+};
+
+menu4.addEventListener('click', function() {
+  getRedditPage.apply(this, [randomPage()]);
+});
+
+// load default page
+getRedditPage('pics');
