@@ -1,5 +1,7 @@
 'use strict';
 
+//const moment = require('moment');
+
 function getRedditPage(threadName) {
   function redditListener() {
     contentArea.innerHTML = '';
@@ -17,41 +19,7 @@ function getRedditPage(threadName) {
       let dataText = responseDataArr[i].data.selftext;
       let dataImage = responseDataArr[i].data.url;
 
-      // calcluate time since posting
-      let timeStamp = Math.floor(new Date().getTime() / 1000.0);
-      let secondsElapsed = timeStamp - dataCreated;
-      let minutesElapsed = secondsElapsed / 60;
-      let hoursElapsed = minutesElapsed / 60;
-      let daysElapsed = hoursElapsed / 24;
-      let monthsElapsed = daysElapsed / (365.25 / 12);
-      let yearsElapsed = monthsElapsed / 12;
-      let timeElapsed;
-
-      if (yearsElapsed >= 2) {
-        timeElapsed = `${Math.floor(yearsElapsed)} years ago`;
-      } else if (yearsElapsed >= 1) {
-        timeElapsed = `${Math.floor(yearsElapsed)} year ago`;
-      } else if (monthsElapsed >= 2) {
-        timeElapsed = `${Math.floor(monthsElapsed)} months ago`;
-      } else if (monthsElapsed >= 1) {
-        timeElapsed = `${Math.floor(monthsElapsed)} month ago`;
-      } else if (daysElapsed >= 2) {
-        timeElapsed = `${Math.floor(daysElapsed)} days ago`;
-      } else if (daysElapsed >= 1) {
-        timeElapsed = `${Math.floor(daysElapsed)} day ago`;
-      } else if (hoursElapsed >= 2) {
-        timeElapsed = `${Math.floor(hoursElapsed)} hours ago`;
-      } else if (hoursElapsed >= 1) {
-        timeElapsed = `${Math.floor(hoursElapsed)} hour ago`;
-      } else if (minutesElapsed >= 2) {
-        timeElapsed = `${Math.floor(minutesElapsed)} minutes ago`;
-      } else if (minutesElapsed >= 1) {
-        timeElapsed = `${Math.floor(minutesElapsed)} minute ago`;
-      } else if (secondsElapsed >= 2) {
-        timeElapsed = `${Math.floor(secondsElapsed)} seconds ago`;
-      } else if (secondsElapsed >= 1) {
-        timeElapsed = `${Math.floor(secondsElapsed)} second ago`;
-      }
+      let timeElapsed = moment(dataCreated * 1000).fromNow();
 
       // container div to hold each post;
       let post = document.createElement('div');
@@ -118,19 +86,18 @@ let menuClass = document.getElementsByClassName('menu');
 // dont include the final 'RANDOM' button in this event listener
 for (let i = 0; i < menuClass.length - 1; i++) {
   menuClass[i].addEventListener('click', function() {
-    getRedditPage.apply(this, [this.dataset.thread]);
+    getRedditPage(this.dataset.thread);
   });
 }
 
 let randomPage = function() {
   let pageArr = ['data', 'hawaii', 'food', 'hockey', 'travel', 'apples', 'laundry'];
   let randomIndex = Math.floor(Math.random() * pageArr.length);
-  console.log(pageArr[randomIndex]);
   return pageArr[randomIndex];
 };
 
 menu4.addEventListener('click', function() {
-  getRedditPage.apply(this, [randomPage()]);
+  getRedditPage(randomPage());
 });
 
 // load default page
