@@ -1,0 +1,76 @@
+// put these variables into a '_variables' partial file
+$defaultBackground: #b74326;
+$hoverColor: #f1592b;
+$menuDarkColor: #3a3a3c;
+$menuLightColor: #818285;
+$largeBannerHeight: 45px;
+$mediumBannerHeight: 40px;
+$smallBannerHeight: 35px;
+$menuFont: 'Oswald', sans-serif;
+$redditFont: 'Lato', sans-serif;
+
+@import 'partials/_large';
+@import 'partials/_medium';
+@import 'partials/_small';
+
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.fa-plus-square {
+  position: absolute;
+  left: 90%;
+  color: $defaultBackground;
+  font-size: 2em;
+}
+
+.fa-plus-square:hover {
+  color: white;
+  background: $hoverColor;
+}
+
+.menuBullet:hover {
+  cursor: default;
+}
+
+.menu:hover {
+  color: $hoverColor;
+  cursor: pointer;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/../assets/bg.jpg);
+  background-size: cover;
+}
+
+.postContainers {
+  font-family: $redditFont;
+  border: 10px transparent solid;
+}
+
+.postContainers:hover {
+  border: $hoverColor 10px solid;
+}
+
+.postTitles {
+  font-weight: bold;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.postDetailBullets {
+  color: $menuLightColor;
+}
+
+.postDetails {
+  color: gray;
+}

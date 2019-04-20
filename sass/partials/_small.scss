@@ -1,0 +1,84 @@
+@media only screen and (max-width: 425px) {
+  .logo {
+    position: absolute;
+    left: 0%;
+  }
+
+  #logoLines {
+    display: none;
+  }
+
+  #banner {
+    display: flex;
+    justify-content: center;
+    height: $smallBannerHeight;
+    background: $menuDarkColor;
+  }
+
+  .menuBullet {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: center;
+    border-top: 1px $menuLightColor solid;
+    width: 25%;
+    height: $smallBannerHeight;
+    font-family: $menuFont;
+  }
+
+  #menu2 {
+    border-left: 1px $menuLightColor solid;
+  }
+
+  #menu3 {
+    border-left: 1px $menuLightColor solid;
+    border-right: 1px $menuLightColor solid;
+  }
+
+  #contentArea {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .postContainers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 450px;
+    width: 95%;
+    background-color: white;
+    margin-top: 12px;
+  }
+
+  .postImages {
+    margin-top: 25px;
+    height: 280px;
+    width: 90%;
+  }
+
+  .postTitles {
+    margin-top: 10px;
+    width: 90%;
+    font-size: 1.5em;
+  }
+
+  .postDetailContainers {
+    width: 90%;
+  }
+
+  .postTexts {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 90%;
+    margin-top: 10px;
+  }
+
+  #footer {
+    display: none;
+  }
+}
