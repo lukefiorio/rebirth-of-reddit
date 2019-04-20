@@ -1,7 +1,5 @@
 'use strict';
 
-//const moment = require('moment');
-
 function getRedditPage(threadName) {
   function redditListener() {
     contentArea.innerHTML = '';
